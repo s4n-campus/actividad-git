@@ -24,7 +24,7 @@ echo "¿Estás listo?"
 echo ""
 echo "¡Comencemos!"
 echo ""
-#sleep 2
+sleep 2
 read -n 1 -r -s -p $'Presiona enter para continuar...\n'
 
 #Introduce nombre
@@ -32,8 +32,7 @@ clear
 echo "Introduce tu nombre y apellido (sin espacios o caracteres especiales)," 
 echo "no lo olvides, este lo utilizaremos durante toda la actividad."
 echo ""
-#read -p "Introduce tu nombre aquí: " NOMBRE
-NOMBRE="alejo"
+read -p "Introduce tu nombre aquí: " NOMBRE
 while [[ "$NOMBRE" =~ [^a-zA-Z] || -z "$NOMBRE" ]]
 do     
 echo ""   
@@ -44,9 +43,9 @@ read -p "Introduce tu nombre aquí: " NOMBRE
 done
 echo ""
 echo "Perfecto, has introducido $NOMBRE"
-#sleep 2
+sleep 2
 echo ""
-#read -p "Es esto correcto? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+read -p "Es esto correcto? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 echo ""
 read -n 1 -r -s -p $'Presiona enter para continuar...\n'
 
@@ -66,7 +65,7 @@ do
   read -n 1 -r -s -p $'Presiona enter para validar si tienes el comando git instalado...\n'
   echo ""
   echo "Validando..."
-  #sleep 1
+  sleep 1
   if ! git --version COMMAND &> /dev/null
   then
       echo "Aún no tienes git instalado, instalaló e intenta de nuevo."
@@ -76,7 +75,7 @@ do
       VERSION=$(git --version | cut -d' ' -f3)
       echo "Perfecto, tienes la versión $VERSION de git"
       INSTALADO="true"
-      #sleep 3
+      sleep 3
       read -n 1 -r -s -p $'Presiona enter para continuar...\n'
   fi
 done
@@ -286,14 +285,11 @@ STAGED1=$(git diff --staged --name-only | sed -n '1p')
 STAGED2=$(git diff --staged --name-only | sed -n '2p')
 ARCHIVO4_IGNORED=""
 ARCHIVO3_NO_STAGED=""
-#ESTO SE COMENTÓ SOLO PARA LA PRUEBA
-#if [[ "$STAGED1" == "modules/${ARCHIVO1}" && "$STAGED2" == "modules/${ARCHIVO2}" ]]; then
-if [[ $ARCHIVO3_NO_STAGED == "" ]]; then
-#La linea anterior se debe borrar
+if [[ "$STAGED1" == "modules/${ARCHIVO1}" && "$STAGED2" == "modules/${ARCHIVO2}" ]]; then
     echo ""
     echo "✔ Excelente, los archivos ${ARCHIVO1} y ${ARCHIVO2} fueron enviados a stagging."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
 else
     echo "✘ Parece que los archivos ${ARCHIVO1} y ${ARCHIVO2} no han sido enviados a stagging."
 fi
@@ -302,7 +298,7 @@ if [[ $ARCHIVO3_NO_STAGED == "" ]]; then
     echo ""
     echo "✔ Excelente, el archivo ${ARCHIVO3} no fue enviado a stagging."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
 else
     echo ""
     echo "✘ Parece que el archivo ${ARCHIVO3} fue enviado a stagging."
@@ -313,7 +309,7 @@ if [[ -f "${GIT_IGNORE}" && ${ARCHIVO4_IGNORED} == "modules/${ARCHIVO4}" ]]; the
     echo ""
     echo "✔ Excelente, el archivo ${GIT_IGNORE} existe y el archivo ${ARCHIVO4} fue añadido."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
 else
     echo "✘ Parece que el archivo ${GIT_IGNORE} no existe o no está ignorando al archivo ${ARCHIVO4}."
 fi
@@ -333,7 +329,7 @@ else
     PUNTOS=$(( PUNTOS +1 ))
     echo ""
     read -n 1 -r -s -p $'Presiona enter para continuar con la siguiente actividad...\n'
-    #sleep 1
+    sleep 1
 fi
 done
 
@@ -432,10 +428,7 @@ read -n 1 -r -s -p $'Una vez la hayas creado presiona enter para validarlo...\n'
 cd ${RUTA}/${RUTAREPO}
 COMMIT_MESSAGE=$(git log --format=%B -n 1)
 cd ${RUTA}
-#ESTO SE COMENTÓ SOLO PARA LA PRUEBA
-#if [[ $COMMIT_MESSAGE == "Adding new ${NOMBRE} modules" ]]; then
-if [[ $ARCHIVO3_NO_STAGED == "" ]]; then
-#La linea anterior se debe borrar
+if [[ $COMMIT_MESSAGE == "Adding new ${NOMBRE} modules" ]]; then
     echo ""
     echo '✔ Excelente, tu commit message es correcto'
     PUNTOS=$(( PUNTOS +1 ))
@@ -508,7 +501,7 @@ echo ""
 echo "Con estos ya puedes tener un control general de un repositorio en tu máquina local."
 echo "¡Ahora continuemos con la práctica!"
 echo ""
-#sleep 2
+sleep 2
 read -n 1 -r -s -p $'Presiona enter para continuar...\n'
 
 #11. Validando git push
@@ -598,12 +591,12 @@ if [[ "$RAMAACTUAL" == "develop" ]]; then
     echo ""
     echo "✔ Excelente, estás en la rama develop."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     if [[ $RAMA_FEATURE_EN_DEVELOP ]]; then
     echo ""
     echo "✔ Excelente, has traído todos los cambios de $RAMAFEATURE."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que no has traído todos los cambios de $RAMAFEATURE."
@@ -612,7 +605,7 @@ if [[ "$RAMAACTUAL" == "develop" ]]; then
     echo ""
     echo "✔ Excelente, tu commit message es correcto y tus cambios fueron enviados al repositorio."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que tu commit message no es correcto o tus cambios no fueron enviados al repositorio."
@@ -642,7 +635,7 @@ else
     PUNTOS=$(( PUNTOS +1 ))
     echo ""
     read -n 1 -r -s -p $'Presiona enter para continuar con la siguiente actividad...\n'
-    #sleep 1
+    sleep 1
 fi
 done
 
@@ -682,12 +675,12 @@ if [[ "$RAMAACTUAL" == "main" ]]; then
     echo ""
     echo "✔ Excelente, estás en la rama main."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     if [[ $RAMA_FEATURE_EN_DEVELOP ]]; then
     echo ""
     echo "✔ Excelente, has traído todos los cambios de develop."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que no has traído todos los cambios de develop."
@@ -696,7 +689,7 @@ if [[ "$RAMAACTUAL" == "main" ]]; then
     echo ""
     echo "✔ Excelente, tu commit message es correcto y tus cambios fueron enviados al repositorio."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que tu commit message no es correcto o tus cambios no fueron enviados al repositorio."
@@ -705,7 +698,7 @@ if [[ "$RAMAACTUAL" == "main" ]]; then
     echo ""
     echo "✔ Excelente, tu tag es correcto."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que tu tag no es correcto."
@@ -729,7 +722,7 @@ else
     PUNTOS=$(( PUNTOS +1 ))
     echo ""
     read -n 1 -r -s -p $'Presiona enter para continuar con la siguiente actividad...\n'
-    #sleep 1
+    sleep 1
 fi
 done
 
@@ -783,7 +776,7 @@ if [[ "$RAMAACTUAL" == "${RAMAHOTFIX}" ]]; then
         echo ""
         echo "✔ Excelente, tu commit message es correcto y tus cambios fueron enviados al repositorio."
         PUNTOS=$(( PUNTOS +1 ))
-        #sleep 1
+        sleep 1
     else
         echo ""
         echo "✘ Parece que tu commit message no es correcto o tus cambios no fueron enviados al repositorio."
@@ -807,7 +800,7 @@ else
     PUNTOS=$(( PUNTOS +1 ))
     echo ""
     read -n 1 -r -s -p $'Presiona enter para continuar con la siguiente actividad...\n'
-    #sleep 1
+    sleep 1
 fi
 done
 
@@ -849,12 +842,12 @@ if [[ "$RAMAACTUAL" == "main" ]]; then
     echo ""
     echo "✔ Excelente, estás en la rama main."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     if [[ $RAMA_HOTFIX_EN_MAIN ]]; then
     echo ""
     echo "✔ Excelente, has traído todos los cambios de la rama ${RAMAHOTFIX}."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que no has traído todos los cambios de ${RAMAHOTFIX}."
@@ -863,7 +856,7 @@ if [[ "$RAMAACTUAL" == "main" ]]; then
     echo ""
     echo "✔ Excelente, tu commit message es correcto y tus cambios fueron enviados al repositorio."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que tu commit message no es correcto o tus cambios no fueron enviados al repositorio."
@@ -872,7 +865,7 @@ if [[ "$RAMAACTUAL" == "main" ]]; then
     echo ""
     echo "✔ Excelente, tu tag es correcto."
     PUNTOS=$(( PUNTOS +1 ))
-    #sleep 1
+    sleep 1
     else
     echo ""
     echo "✘ Parece que tu tag no es correcto."
@@ -896,7 +889,7 @@ else
     PUNTOS=$(( PUNTOS +1 ))
     echo ""
     read -n 1 -r -s -p $'Presiona enter para finalizar la actividad y obtener tu flag...\n'
-    #sleep 1
+    sleep 1
 fi
 done
 

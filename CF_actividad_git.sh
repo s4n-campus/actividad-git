@@ -304,7 +304,7 @@ else
     echo "✘ Parece que el archivo ${ARCHIVO3} fue enviado a stagging."
 fi
 GIT_IGNORE=".gitignore"
-ARCHIVO4_IGNORED=$(cat ${RUTA}/${RUTAREPO}/.gitignore | grep modules/${ARCHIVO4_IGNORED})
+ARCHIVO4_IGNORED=$(cat ${RUTA}/${RUTAREPO}/.gitignore | grep modules/${ARCHIVO4})
 if [[ -f "${GIT_IGNORE}" && ${ARCHIVO4_IGNORED} == "modules/${ARCHIVO4}" ]]; then
     echo ""
     echo "✔ Excelente, el archivo ${GIT_IGNORE} existe y el archivo ${ARCHIVO4} fue añadido."

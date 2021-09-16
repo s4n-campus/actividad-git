@@ -121,7 +121,7 @@ if [[ -f "$ARCHIVO_VALIDA_REPO_CLONADO" ]]; then
     echo ""
     echo "Feedback:"
     echo ""
-    echo 'Cuando utilizas "git glone" puedes añadir algunos flags importantes, por ejemplo:'
+    echo 'Cuando utilizas "git clone" puedes añadir algunos flags importantes, por ejemplo:'
     echo ""
     echo "  ✸ git clone \${repositorio} --branch \${branch}: Permite descargar un branch específico"
     echo "  ✸ git clone -C \${ruta} \${repositorio}: Permite descargar un repositorio en una ruta específica"
